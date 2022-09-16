@@ -1,0 +1,10 @@
+.tool {
+    position: relative;
+    width: 65%;
+    border:1px solid black;
+}
+
+.radios {
+    display: flex;
+    justify-content: space-between;
+}

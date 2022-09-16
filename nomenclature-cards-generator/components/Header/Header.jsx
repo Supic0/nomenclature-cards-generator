@@ -1,15 +1,15 @@
 import React from 'react'
-import Logo from 'assets\logo.svg'
-import { useState } from 'react/cjs/react.production.min'
+import Logo from '/assets/logo.svg'
+import styles from '/styles/Header.module.css'
 
 export default function Header() {
 
-
     return (
-        <>
-            <Logo />
+        <div className={styles.Header}>
+            <Logo/>
             <div>Connexion</div>
             <div>Inscription</div>
-        </>
+        </div>
     )
 }
+

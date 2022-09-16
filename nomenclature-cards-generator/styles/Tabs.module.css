@@ -1,0 +1,11 @@
+.Tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;;
+}
+
+.Tab {
+    background-color: gainsboro;
+    cursor:pointer;
+}

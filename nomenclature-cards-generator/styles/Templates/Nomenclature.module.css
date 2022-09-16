@@ -1,0 +1,50 @@
+.text {
+    color: green;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 8%;
+
+}
+
+.template {
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    margin-top: 30px;
+    position: relative;
+    border-radius: 12px;
+}
+.contour {
+    border: 2px solid #72797D;
+    border-radius: 12px;
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.line {
+    width: 100%;
+    position: absolute;
+    top: 80%;
+    height: 1.5px;
+    background-color: #72797D;
+
+}
+.image {
+    
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%);
+    height: 80%;
+    object-fit: cover;
+    margin:0;
+}
+
