@@ -1,8 +1,14 @@
 import React from 'react'
 import { useState } from 'react';
-import styles from '/styles/Tool.module.css'
+import styles from '/styles/Tool.module.css';
+import template from '/styles/Templates/Nomenclature.module.css'
+import imageTest from '/assets/test2.jpg'
+import { useRef } from 'react';
+import * as htmlToImage from 'html-to-image';
 
-export default function NomenclatureTool() {
+export default function NomenclatureTool({ setListOfCards, listOfCards }) {
+
+    const Ref1 = useRef(null);
 
     const [form, setForm] = useState(
         {
@@ -11,15 +17,37 @@ export default function NomenclatureTool() {
             full: false,
             bold: false,
             cursive: false,
-            shape:"Normal"
+            shape: "Normal"
         }
     );
     const [image, setImage] = useState(null);
 
-    const handleSubmit = (event) => {
+    const Capture = (element) => {
+       return htmlToImage.toSvg(element)
+            .then(function (dataUrl) {
+                var img = new Image();
+                img.src = dataUrl;
+                document.body.appendChild(img);
+                return img.src;
+            })
+            .catch(function (error) {
+                console.error('oops, la fonction onCapture ne fonctionne pas', error);
+            });
+    }
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(image);
         console.log(form);
+        const vignette = await Capture(Ref1.current);
+
+        setListOfCards([...listOfCards,
+        {
+            name: form.text,
+            vignette: vignette,
+            form: form,
+        }]);
+
     }
 
     const handleImage = (e) => {
@@ -30,7 +58,7 @@ export default function NomenclatureTool() {
 
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        
+
         setForm({
             ...form,
             [target.name]: value,
@@ -45,11 +73,11 @@ export default function NomenclatureTool() {
             <form onSubmit={handleSubmit}>
                 <div className={styles.radios} onChange={handleChange}>
                     <div>
-                        <input type="radio" name="size" id="Petit" value="Petit"  />
+                        <input type="radio" name="size" id="Petit" value="Petit" />
                         <label htmlFor="Petit">Petit</label>
                     </div>
                     <div>
-                        <input type="radio" name="size" id="Moyen" value="Moyen" />
+                        <input type="radio" name="size" id="Moyen" value="Moyen" defaultChecked/>
                         <label htmlFor="Moyen">Moyen</label>
                     </div>
                     <div>
@@ -58,8 +86,8 @@ export default function NomenclatureTool() {
                     </div>
                 </div>
 
-                <input type="file" id="image" name="image" accept="image/png, image/jpeg" 
-                 onChange={handleImage}/>
+                <input type="file" id="image" name="image" accept="image/png, image/jpeg"
+                    onChange={handleImage} />
                 <input type="text" name="text" id="text" onChange={handleChange} value={form.text} />
                 <div>
                     <div>
@@ -76,15 +104,22 @@ export default function NomenclatureTool() {
                     </div>
                     <div onChange={handleChange}>
                         <div>
-                            <input type="radio" name="shape" id="Normal" value="Normal" defaultChecked/>
+                            <input type="radio" name="shape" id="Normal" value="Normal" defaultChecked />
                             <label htmlFor="Normal">Normal</label>
                         </div>
                         <div>
-                            <input type="radio" name="shape" id="Large" value="Large"  />
+                            <input type="radio" name="shape" id="Large" value="Large" />
                             <label htmlFor="Large">Large</label>
                         </div>
                     </div>
                     <button type="submit">Envoyer</button>
+                </div>
+
+                <div className={template.template} ref={Ref1}>
+                    <img src={imageTest.src} className={template.image} />
+                    <div className={template.contour}></div>
+                    <div className={template.line}></div>
+                    <div className={template.text}>Cheval</div>
                 </div>
             </form>
         </>

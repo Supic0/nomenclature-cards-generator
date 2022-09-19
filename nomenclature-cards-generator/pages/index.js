@@ -5,13 +5,12 @@ import Tool from '/components/tool/tool'
 import ListCart from '/components/ListCart/ListCart'
 import { useState } from 'react'
 import styles from '/styles/Home.module.css'
-import template from '/styles/Templates/Nomenclature.module.css'
-import imageTest from '/assets/test1.jpg'
+
 
 export default function Home() {
 
   const [toolType, setToolType] = useState('Nomenclature');
-
+  const [listOfCards, setListOfCards] = useState([]);
   return (
     <div>
       <Head>
@@ -22,16 +21,11 @@ export default function Home() {
       <Header />
       <Tabs setToolType={setToolType} />
       <div className={styles.toolListZone}>
-        <Tool toolType={toolType} />
-        <ListCart />
+        <Tool toolType={toolType} setListOfCards={setListOfCards} listOfCards={listOfCards}/>
+        <ListCart listOfCards={listOfCards}/>
       </div>
       <p>Pour dépasser les limitations et créer des cartes à l’infinie <a>passez à Card+</a></p>
-      <div className={template.template}>
-        <img src={imageTest.src} className={template.image}/>
-        <div className={template.contour}></div>
-        <div className={template.line}></div>
-        <div className={template.text}>Cheval</div>
-      </div>
+      
     </div>
   )
 }

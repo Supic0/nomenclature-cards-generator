@@ -11,12 +11,11 @@
     width: 200px;
     height: 300px;
     overflow: hidden;
-    margin-top: 30px;
     position: relative;
     border-radius: 12px;
 }
 .contour {
-    border: 2px solid #72797D;
+    border: 3px solid #72797D;
     border-radius: 12px;
     position: absolute;
     top:0;
@@ -32,7 +31,7 @@
     width: 100%;
     position: absolute;
     top: 80%;
-    height: 1.5px;
+    height: 2px;
     background-color: #72797D;
 
 }

@@ -4,16 +4,16 @@ import ClipCardTool from './ClipCardTool';
 import PuzzleTool from './PuzzleTool';
 import styles from "/styles/Tool.module.css"
 
-export default function Tool({ toolType }) {
+export default function Tool({ toolType, setListOfCards, listOfCards }) {
 
     const renderSwitch = () => {
         switch (toolType) {
             case 'Nomenclature':
-                return <NomenclatureTool />;
+                return <NomenclatureTool  setListOfCards={setListOfCards} listOfCards={listOfCards}/>;
                 case 'ClipCard':
-                return <ClipCardTool />;
+                return <ClipCardTool  setListOfCards={setListOfCards} listOfCards={listOfCards}/>;
                 case 'Puzzle':
-                return <PuzzleTool />;
+                return <PuzzleTool   setListOfCards={setListOfCards} listOfCards={listOfCards}/>;
             default:
                 return "default"
         }
