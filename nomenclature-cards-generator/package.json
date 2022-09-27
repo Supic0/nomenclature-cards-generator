@@ -9,13 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/css": "^11.10.0",
+    "@react-pdf/renderer": "^3.0.0",
     "@svgr/webpack": "^6.3.1",
+    "@use-gesture/react": "^10.2.20",
     "html-to-image": "^1.10.8",
     "next": "12.3.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-pdf": "^5.7.2"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "eslint": "8.23.1",

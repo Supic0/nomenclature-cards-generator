@@ -22,7 +22,7 @@ export default function Home() {
       <Tabs setToolType={setToolType} />
       <div className={styles.toolListZone}>
         <Tool toolType={toolType} setListOfCards={setListOfCards} listOfCards={listOfCards}/>
-        <ListCart listOfCards={listOfCards}/>
+        <ListCart listOfCards={listOfCards} setListOfCards={setListOfCards}/>
       </div>
       <p>Pour dépasser les limitations et créer des cartes à l’infinie <a>passez à Card+</a></p>
       
